@@ -1,0 +1,10 @@
+.DS_Store
+.idea
+*.o
+Colleen
+Grace
+Sully
+Sully_*
+tmp
+tmp_Colleen
+Grace_kid.c
