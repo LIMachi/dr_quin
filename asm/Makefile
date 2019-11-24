@@ -1,5 +1,8 @@
 NAME := Colleen Grace Sully
 
+NASM := ~/.brew/bin/brew
+BREW := ~/.brew/bin/nasm
+
 all: $(NAME)
 
 help:
@@ -36,8 +39,14 @@ test_Sully: Sully
 
 test: $(foreach n, $(NAME), test_$n)
 
-%.o: %.s
-	nasm -f macho64 $< -o $@
+$(BREW):
+	-git clone https://github.com/Homebrew/brew ~/.brew && echo 'export PATH=~/.brew/bin:$PATH' >> ~/.zshrc && source ~/.zshrc && brew update
+
+$(NASM): $(BREW)
+	$(BREW) install nasm
+
+%.o: %.s $(NASM)
+	$(NASM) -f macho64 $< -o $@
 
 .SECONDEXPANSION:
 
