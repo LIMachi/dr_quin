@@ -1,7 +1,7 @@
 NAME := Colleen Grace Sully
 
-NASM := ~/.brew/bin/nasm
-BREW := ~/.brew/bin/brew
+NASM := ~/.brew/bin/brew
+BREW := ~/.brew/bin/nasm
 
 all: $(NAME)
 
