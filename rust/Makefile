@@ -27,9 +27,9 @@ test_Grace: Grace
 test_Sully: Sully
 	rm -rf tmp
 	mkdir -p tmp; cp Sully tmp/; cd tmp/; ./Sully; ls -la | grep Sully | wc -l;
-	#@echo "Expected: 19 (Sully + 6 * sully_? + 6 * Sully_?.rs + 6 * Sully_?.o)"
+	@echo "Expected: 13 (Sully + 6 * sully_? + 6 * Sully_?.rs)"
 	-cd tmp/; diff ../Sully.rs Sully_5.rs; diff ../Sully.rs Sully_4.rs; diff Sully_5.rs Sully_0.rs;
-	#$@echo "Expected:\nno diff between Sully and Sully_5\n'mov r15,5' and 'mov r15,4' in Sully and Sully_5\n'mov r15,5' and 'mov r15,0' in Sully_5 and Sully_0"
+	@echo "Expected:\nno diff between Sully and Sully_5\n'let mut i = 5' and 'let mut i = 4' in Sully and Sully_5\n'let mut i = 5' and 'let mut i = 0' in Sully_5 and Sully_0"
 
 test: $(foreach n, $(NAME), test_$n)
 
