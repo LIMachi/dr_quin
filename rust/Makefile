@@ -21,7 +21,7 @@ test_Colleen: Colleen
 
 test_Grace: Grace
 	./Grace
-	-diff Grace.s Grace_kid.rs
+	-diff Grace.rs Grace_kid.rs
 	@echo expected: no diff
 
 test_Sully: Sully
