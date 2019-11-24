@@ -28,10 +28,11 @@ test_Grace: Grace
 	@echo expected: no diff
 
 test_Sully: Sully
+	rm -rf tmp
 	mkdir -p tmp; cp Sully tmp/; cd tmp/; ./Sully; ls -la | grep Sully | wc -l;
 	@echo "Expected: 19 (Sully + 6 * sully_? + 6 * Sully_?.s + 6 * Sully_?.o)"
 	-cd tmp/; diff ../Sully.s Sully_5.s; diff ../Sully.s Sully_4.s; diff Sully_5.s Sully_0.s;
-	@echo "Expected:\nno diff between Sully and Sully_5\n'i dd 5' and 'i dd 4' in Sully and Sully_5\n'i dd 5' and 'i dd 0' in Sully_5 and Sully_0"
+	@echo "Expected:\nno diff between Sully and Sully_5\n'mov r15,5' and 'mov r15,4' in Sully and Sully_5\n'mov r15,5' and 'mov r15,0' in Sully_5 and Sully_0"
 
 test: $(foreach n, $(NAME), test_$n)
 

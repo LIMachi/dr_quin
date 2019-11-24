@@ -23,6 +23,7 @@ test_Grace: Grace
 	@echo expected: no diff
 
 test_Sully: Sully
+	rm -rf tmp
 	mkdir -p tmp; cp Sully tmp/; cd tmp/; ./Sully; ls -la | grep Sully | wc -l;
 	@echo "Expected: 13 (Sully + 6 * sully_? + 6 * Sully_?.c)"
 	-cd tmp/; diff ../Sully.c Sully_5.c; diff ../Sully.c Sully_4.c; diff Sully_5.c Sully_0.c;
